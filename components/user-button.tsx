@@ -1,7 +1,6 @@
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { auth } from "auth";
-import Link from "next/link";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import CustomLink from "./custom-link";
+import { SignIn, SignOut } from "./auth-components";
 
 export default async function UserButton() {
   const session = await auth();
@@ -39,14 +38,12 @@ export default async function UserButton() {
             </p>
           </div>
         </DropdownMenuLabel>
-        <CustomLink href="/api/auth/signout">
-          <DropdownMenuItem>Sign out</DropdownMenuItem>
-        </CustomLink>
+        <DropdownMenuItem>
+          <SignOut />
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   ) : (
-    <Link href="api/auth/signin">
-      <Button>Sign In</Button>
-    </Link>
+    <SignIn />
   );
 }

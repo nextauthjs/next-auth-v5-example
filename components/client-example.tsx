@@ -41,7 +41,7 @@ const UpdateForm = () => {
   );
 };
 
-export default function Client() {
+export default function ClientExample() {
   const { data: session, status } = useSession();
   return (
     <div className="space-y-2">
