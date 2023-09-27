@@ -6,7 +6,10 @@ export function SignIn({
   ...props
 }: { provider?: string } & React.ComponentPropsWithRef<typeof Button>) {
   return (
-    <form action={`/api/auth/signin/${provider}`} method="post">
+    <form
+      action={provider ? `/api/auth/signin/${provider}` : "/api/auth/signin"}
+      method="post"
+    >
       <Button {...props}>Sign In</Button>
       <CSRF_experimental />
     </form>
