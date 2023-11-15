@@ -1,28 +1,31 @@
-import { CSRF_experimental } from "auth";
+import { signOut } from "auth";
 import { Button } from "./ui/button";
+import Link from "next/link";
 
-export function SignIn({
-  provider,
-  ...props
-}: { provider?: string } & React.ComponentPropsWithRef<typeof Button>) {
+export function SignIn(
+  props: Omit<React.ComponentPropsWithRef<typeof Link>, 'href'>
+) {
   return (
-    <form
-      action={provider ? `/api/auth/signin/${provider}` : "/api/auth/signin"}
-      method="post"
-    >
-      <Button {...props}>Sign In</Button>
-      <CSRF_experimental />
-    </form>
+      <Link {...props} href="api/auth/signin">
+        <Button>
+            Sign In
+        </Button>
+      </Link>
   );
 }
 
 export function SignOut(props: React.ComponentPropsWithRef<typeof Button>) {
   return (
-    <form action="/api/auth/signout" className="w-full" method="post">
+    <form
+      action={async () => {
+        "use server";
+        await signOut();
+      }}
+      className="w-full"
+    >
       <Button variant="ghost" className="w-full p-0" {...props}>
         Sign Out
       </Button>
-      <CSRF_experimental />
     </form>
   );
 }

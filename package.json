@@ -27,7 +27,7 @@
     "clsx": "^2.0.0",
     "lucide-react": "^0.274.0",
     "next": "latest",
-    "next-auth": "0.0.0-manual.ffd05533",
+    "next-auth": "5.0.0-beta.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "tailwind-merge": "^1.14.0",
@@ -44,7 +44,7 @@
   },
   "pnpm": {
     "overrides": {
-      "@auth/core": "0.13.0"
+      "@auth/core": "0.18.1"
     }
   }
 }
